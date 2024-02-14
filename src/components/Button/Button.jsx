@@ -1,9 +1,13 @@
-import css from './Button.module.css'
+import { useState } from 'react';
+import css from './Button.module.css';
 
-const Button = ({text}) => {
+const Button = ({ text }) => {
+
   return (
-      <button className={ css.btn}>{text }</button>
-  )
-}
+    <button className={css.btn} onClick={handleClick}>
+      {text}: {clicks}
+    </button>
+  );
+};
 
-export default Button
+export default Button;

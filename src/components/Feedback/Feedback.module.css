@@ -1,3 +1,7 @@
-.feedback {
+.feedbackList {
   font-size: 24px;
+}
+
+.reedbackItem:first-letter {
+  text-transform: uppercase;
 }
