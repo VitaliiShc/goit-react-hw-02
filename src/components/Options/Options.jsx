@@ -12,6 +12,7 @@ export default function Options({
     <div className={css.btns}>
       {feedbackTypes.map((feedbackType) => (
         <button
+          type="button"
           key={feedbackType}
           onClick={() => updValueu(`${feedbackType}`)}
           className={css.btn}
@@ -20,7 +21,12 @@ export default function Options({
         </button>
       ))}
       {totalFeedback !== 0 && (
-        <button key="reset" onClick={resetFeedbacks} className={css.btn}>
+        <button
+          type="reset"
+          key="reset"
+          onClick={resetFeedbacks}
+          className={css.btn}
+        >
           reset
         </button>
       )}
