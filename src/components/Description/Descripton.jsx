@@ -1,6 +1,6 @@
-import css from './Descripton.module.css'
+import css from './Descripton.module.css';
 
-const Descripton = () => {
+export default function Descripton() {
   return (
     <div className={css.descripton}>
       <h1 className={css.title}>Sip Happens Café</h1>
@@ -10,6 +10,4 @@ const Descripton = () => {
       </p>
     </div>
   );
-};
-
-export default Descripton;
+}

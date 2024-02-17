@@ -1,18 +1,19 @@
 import css from './Feedback.module.css';
 
-const Feedback = ({ stats: { good, neutral, bad, total, positive }, }) => {
+export default function Feedback({
+  currentValues: { good, neutral, bad },
+  totalFeedback,
+  positiveRate,
+}) {
   return (
-    <ul className={css.feedbackList}>
-      <li className={css.reedbackItem}>good: {good}</li>
-      <li className={css.reedbackItem}>
-        neutral:
-        {neutral}
-      </li>
-      <li className={css.reedbackItem}>bad: {bad}</li>
-      <li className={css.reedbackItem}>total: {total}</li>
-      <li className={css.reedbackItem}>positive: {positive}%</li>
-    </ul>
+    <div className={css.feedbackList}>
+      <p className={css.reedbackItem}>good: {good}</p>
+      <p className={css.reedbackItem}>
+        neutral: {neutral}
+      </p>
+      <p className={css.reedbackItem}>bad: {bad}</p>
+      <p className={css.reedbackItem}>total: {totalFeedback}</p>
+      <p className={css.reedbackItem}>positive: {positiveRate}%</p>
+    </div>
   );
-};
-
-export default Feedback;
+}

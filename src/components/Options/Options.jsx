@@ -1,20 +1,29 @@
 import css from './Options.module.css';
 
-const Options = ({ options, value, onTrack }) => {
+export default function Options({
+  options,
+  updValueu,
+  resetFeedbacks,
+  totalFeedback,
+}) {
+  const feedbackTypes = Object.keys(options);
+
   return (
     <div className={css.btns}>
-      {options.map((option) => (
+      {feedbackTypes.map((feedbackType) => (
         <button
-          key={option}
-          value={clicks}
-          onClick={onTrack}
+          key={feedbackType}
+          onClick={() => updValueu(`${feedbackType}`)}
           className={css.btn}
         >
-          {option}: {value}
+          {feedbackType}
         </button>
       ))}
+      {totalFeedback !== 0 && (
+        <button key="reset" onClick={resetFeedbacks} className={css.btn}>
+          reset
+        </button>
+      )}
     </div>
   );
-};
-
-export default Options;
+}
