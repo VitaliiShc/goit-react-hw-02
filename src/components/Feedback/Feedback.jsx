@@ -7,13 +7,13 @@ export default function Feedback({
 }) {
   return (
     <div className={css.feedbackList}>
-      <p className={css.reedbackItem}>good: {good}</p>
-      <p className={css.reedbackItem}>
+      <p className={css.feedbackItem}>good: {good}</p>
+      <p className={css.feedbackItem}>
         neutral: {neutral}
       </p>
-      <p className={css.reedbackItem}>bad: {bad}</p>
-      <p className={css.reedbackItem}>total: {totalFeedback}</p>
-      <p className={css.reedbackItem}>positive: {positiveRate}%</p>
+      <p className={css.feedbackItem}>bad: {bad}</p>
+      <p className={css.feedbackItem}>total: {totalFeedback}</p>
+      <p className={css.feedbackItem}>positive: {positiveRate}%</p>
     </div>
   );
 }

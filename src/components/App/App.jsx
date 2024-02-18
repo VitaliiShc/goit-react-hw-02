@@ -1,31 +1,32 @@
 import { useEffect, useState } from 'react';
 // import css from './App.module.css';
-import Descripton from '../Description/Descripton';
+import Description from '../Description/Description';
 import Options from '../Options/Options';
 import Feedback from '../Feedback/Feedback';
 import Notification from '../Notification/Notification';
 
+const stats = {
+  good: 0,
+  neutral: 0,
+  bad: 0,
+};
+
+function getInitialStats() {
+  const savedStats = window.localStorage.getItem('stats');
+  return savedStats !== null ? JSON.parse(savedStats) : { ...stats };
+}
+
 export default function App() {
-  
-  const stats = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-
-  function getInitialStats() {
-    const savedStats = window.localStorage.getItem('stats');
-    return savedStats !== null ? JSON.parse(savedStats) : { ...stats };
-  }
-
   useEffect(() => {
-    window.localStorage.setItem('stats', JSON.stringify({ ...values }));
+    window.localStorage.setItem('stats', JSON.stringify({ ...values }), [
+      { ...values },
+    ]);
   });
 
   const [values, setValues] = useState(getInitialStats);
 
-  const updateFeedback = (key) => {
-    setValues({ ...values, [key]: values[key] + 1 });
+  const updateFeedback = ({ feedbackType }) => {
+    setValues({ ...values, [feedbackType]: values[feedbackType] + 1 });
   };
 
   const resetValues = () => {
@@ -33,16 +34,17 @@ export default function App() {
   };
 
   const totalFeedback = values.good + values.neutral + values.bad;
-  const positiveRate = Math.round(
-    ((values.good + values.neutral) / totalFeedback) * 100
-  );
+  const positiveRate =
+    totalFeedback !== 0
+      ? Math.round(((values.good + values.neutral) / totalFeedback) * 100)
+      : 0;
 
   return (
     <>
-      <Descripton />
+      <Description />
       <Options
         options={stats}
-        updValueu={updateFeedback}
+        updateValue={updateFeedback}
         resetFeedbacks={resetValues}
         totalFeedback={totalFeedback}
       />
@@ -53,7 +55,7 @@ export default function App() {
           positiveRate={positiveRate}
         />
       ) : (
-        <Notification />
+        <Notification message="No feedback yet" />
       )}
     </>
   );

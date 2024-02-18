@@ -2,7 +2,7 @@ import css from './Options.module.css';
 
 export default function Options({
   options,
-  updValueu,
+  updateValue,
   resetFeedbacks,
   totalFeedback,
 }) {
@@ -14,7 +14,7 @@ export default function Options({
         <button
           type="button"
           key={feedbackType}
-          onClick={() => updValueu(`${feedbackType}`)}
+          onClick={() => updateValue({feedbackType})}
           className={css.btn}
         >
           {feedbackType}

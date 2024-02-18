@@ -1,6 +1,6 @@
-import css from './Descripton.module.css';
+import css from './Description.module.css';
 
-export default function Descripton() {
+export default function Description() {
   return (
     <div className={css.descripton}>
       <h1 className={css.title}>Sip Happens Café</h1>
