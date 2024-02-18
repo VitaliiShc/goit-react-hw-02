@@ -20,10 +20,8 @@ export default function App() {
   const [values, setValues] = useState(getInitialStats);
 
   useEffect(() => {
-    window.localStorage.setItem('stats', JSON.stringify({ ...values }), [
-      values,
-    ]);
-  });
+    window.localStorage.setItem('stats', JSON.stringify({ ...values }));
+  }, [values]);
 
   const updateFeedback = ({ feedbackType }) => {
     setValues({ ...values, [feedbackType]: values[feedbackType] + 1 });
