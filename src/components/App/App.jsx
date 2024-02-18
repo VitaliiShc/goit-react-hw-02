@@ -17,13 +17,13 @@ function getInitialStats() {
 }
 
 export default function App() {
+  const [values, setValues] = useState(getInitialStats);
+
   useEffect(() => {
     window.localStorage.setItem('stats', JSON.stringify({ ...values }), [
-      { ...values },
+      values,
     ]);
   });
-
-  const [values, setValues] = useState(getInitialStats);
 
   const updateFeedback = ({ feedbackType }) => {
     setValues({ ...values, [feedbackType]: values[feedbackType] + 1 });
